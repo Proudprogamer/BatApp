@@ -10,7 +10,6 @@ import {
   WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
-// Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { ShowSolBalance } from './components/balance/balance';
 import { SendTokens } from './components/send_transc/send';
@@ -20,39 +19,46 @@ function App() {
     <ConnectionProvider endpoint={"https://solana-devnet.g.alchemy.com/v2/-kg_WU6zDYecne1V1EG8U9bANGpu8pDD"}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
-          <div className="min-h-screen bg-gray-900 text-white">
-            <div className="max-w-6xl mx-auto p-8">
+          <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+            <div className="max-w-6xl mx-auto p-6">
               {/* Header */}
-              <header className="flex flex-col md:flex-row items-center justify-between mb-12 space-y-4 md:space-y-0">
-                <h1 className="text-4xl font-bold text-white-500">BatApp</h1>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <div className="transform hover:scale-105 transition-transform">
-                    <WalletMultiButton />
-                  </div>
-                  <div className="transform hover:scale-105 transition-transform">
-                    <WalletDisconnectButton />
-                  </div>
+              <header className="flex flex-col md:flex-row items-center justify-between mb-8 bg-gray-800/50 p-6 rounded-xl backdrop-blur-sm">
+                <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+                  BatApp
+                </h1>
+                <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-0">
+                  <WalletMultiButton className="transition-transform hover:scale-105" />
+                  <WalletDisconnectButton className="transition-transform hover:scale-105" />
                 </div>
               </header>
 
-              {/* Main Content */}
-              <div className="space-y-8">
-                <div className="bg-gray-800 rounded-lg p-6 shadow-lg border border-white-500/20">
-                  <h2 className="text-2xl font-semibold mb-4 text-white-400">Welcome to BatApp</h2>
-                  <div className="text-gray-300">hello there</div>
+              {/* Main Grid Layout */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Balance Card */}
+                <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50">
+                  <h2 className="text-xl font-semibold mb-4 text-purple-400">Balance</h2>
+                  <ShowSolBalance />
                 </div>
 
-                {/* Airdrop Section */}
-                <div className="bg-gray-800 rounded-lg shadow-lg border border-white-500/20">
+                {/* Airdrop Card */}
+                <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50">
+                  <h2 className="text-xl font-semibold mb-4 text-purple-400">Airdrop</h2>
                   <Airdrop />
+                </div>
+
+                {/* Send Tokens Card */}
+                <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50">
+                  <h2 className="text-xl font-semibold mb-4 text-purple-400">Send Tokens</h2>
+                  <SendTokens />
+                </div>
+
+                {/* Sign Message Card */}
+                <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50">
+                  <h2 className="text-xl font-semibold mb-4 text-purple-400">Sign Message</h2>
+                  <SignMessage />
                 </div>
               </div>
             </div>
-
-            <ShowSolBalance/>
-            <SignMessage/>
-            <SendTokens/>
-
           </div>
         </WalletModalProvider>
       </WalletProvider>
