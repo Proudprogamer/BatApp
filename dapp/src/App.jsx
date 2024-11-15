@@ -13,6 +13,7 @@ import { clusterApiUrl } from '@solana/web3.js';
 // Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { ShowSolBalance } from './components/balance/balance';
+import { SendTokens } from './components/send_transc/send';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
 
             <ShowSolBalance/>
             <SignMessage/>
+            <SendTokens/>
 
           </div>
         </WalletModalProvider>
