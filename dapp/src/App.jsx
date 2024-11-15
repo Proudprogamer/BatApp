@@ -3,6 +3,7 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
 import Airdrop from './components/Airdrop/Airdrop';
+import { SignMessage } from './components/signmessage/sign';
 import {
   WalletModalProvider,
   WalletDisconnectButton,
@@ -48,6 +49,7 @@ function App() {
             </div>
 
             <ShowSolBalance/>
+            <SignMessage/>
 
           </div>
         </WalletModalProvider>
